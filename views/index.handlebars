@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-3">
+      <ul>
+        {{#each burgers}}
+          <li>{{id}}: {{burger_name}}</li>
+        {{/each}}
+      </ul>
+    </div>
+    <div class="col-sm-3">
+      <ul>
+        {{#each burgers}}
+          <li>{{id}}: {{burger_name}}</li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</div>
+
+<form action="/api/burgers" name="burgerform">
+  <textarea type="text" name="burgername" id="newburger"></textarea>
+  <button type="submit" id="submitbutton">Submit!</button>
+</form>
+
+<script>
+  $("#submitbutton").on("click", function(event) {
+    event.preventDefault();
+
+    var newBurger = $("#newBurger").val().trim();
+    console.log(newBurger)
+    $.ajax("/api/burgers", {
+      type: "POST",
+      data: newBurger
+    }).then(function(){
+      location.reload();
+    })
+  })
+
+
+</script>
