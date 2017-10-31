@@ -1,7 +1,13 @@
 var burger = require("../models/burger.js");
 var express = require("express");
-var app = express();
+var router = express.Router();
 
-app.get("/", function(req, res) {
-  res.render("index", {burgers: [id: 1, burger_name: "big mac"]})
+router.get("/", function(req, res) {
+  res.redirect("/index");
 })
+
+router.get("/index", function(req, res) {
+  
+})
+
+// module.exports = controller;
