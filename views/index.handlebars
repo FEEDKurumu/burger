@@ -2,40 +2,32 @@
   <div class="row">
     <div class="col-sm-3"></div>
     <div class="col-sm-3">
-      <ul>
-        {{#each burgers}}
-          <li>{{id}}: {{burger_name}}</li>
-        {{/each}}
-      </ul>
+      {{#each burgers}}
+        {{#unless devoured}}
+        <form action="/eat/{{id}}" method="POST">
+            <li>{{id}}: {{burger_name}}</li>
+            <button class="btn btn-danger" type="submit">Devour!</button>
+          </div>
+        </form>
+        {{/unless}}
+      {{/each}}
     </div>
+
     <div class="col-sm-3">
-      <ul>
-        {{#each burgers}}
+      {{#each burgers}}
+        {{#if devoured}}
           <li>{{id}}: {{burger_name}}</li>
-        {{/each}}
-      </ul>
+          </span>
+        {{/if}}
+      {{/each}}
     </div>
   </div>
+  
+  <form action="/api/new" method="POST">
+    <label>Request a new burger!</label>
+    <textarea class="form-control" type="text" name="burger_name" id="newburger"></textarea>
+    <button type="submit" id="submitbutton">Submit!</button>
+  </form>
 </div>
 
-<form action="/api/burgers" name="burgerform">
-  <textarea type="text" name="burgername" id="newburger"></textarea>
-  <button type="submit" id="submitbutton">Submit!</button>
-</form>
 
-<script>
-  $("#submitbutton").on("click", function(event) {
-    event.preventDefault();
-
-    var newBurger = $("#newBurger").val().trim();
-    console.log(newBurger)
-    $.ajax("/api/burgers", {
-      type: "POST",
-      data: newBurger
-    }).then(function(){
-      location.reload();
-    })
-  })
-
-
-</script>
