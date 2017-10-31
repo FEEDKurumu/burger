@@ -1,0 +1,13 @@
+body {
+  background: #fff;
+}
+
+#newburger {
+  width: 50%;
+}
+
+#burgerpic {
+  display: block;
+  width: 10%;
+  margin: auto;
+}

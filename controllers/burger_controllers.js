@@ -15,13 +15,13 @@ router.get("/index", function(req, res) {
 
 router.post("/api/new", function(req, res) {
   burger.insertOne(req.body.burger_name, function() {
-    res.redirect("/index");
+    res.redirect("/");
   })
 })
 
 router.post("/eat/:id", function(req, res) {
   burger.updateOne(req.params.id, function() {
-    res.redirect("/index");
+    res.redirect("/");
   })
 })
 
